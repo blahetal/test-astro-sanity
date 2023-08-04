@@ -1,0 +1,24 @@
+---
+import { useSanityClient } from 'astro-sanity';
+
+const pets = await useSanityClient().fetch(`*[_type == "pet"]`);
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<h1>Astro - sanity demo</h1>
+    {
+		pets.map((pet) => (
+        <section>
+          <h2>{pet.name}</h2>
+        </section>
+      ))
+    }
+</html>
