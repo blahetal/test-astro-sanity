@@ -17,6 +17,8 @@ Vsechno dulezity se nacita v kodu [tady](frontend/src/pages/index.astro)
 4. Sanity studio se pak da self-hostovat [takhle](https://www.sanity.io/docs/deployment#ed3cd78ea4eb)
 5. build studia (adresar studio) `npm run build` - vysledek je v adresari `dist`
 6. build statickych stranek (adresar frontend) 'npm run build' - vysledek je v adresari `dist`
+7. studio nema vlastni lokalizaci do cestiny, ale jeho zdrojaky se daji v adresari `dist` prepsat na cestinu
+8. sanity podporuje i [vice jazyku](https://www.sanity.io/docs/localization)
 7. oboji se pak nahraje na nas web server - [web](http://test-sanity.rigu.cz/) a [studio](https://test-sanity.rigu.cz/studio)
 
 ## Content
