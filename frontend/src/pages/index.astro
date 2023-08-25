@@ -1,8 +1,14 @@
 ---
-import { useSanityClient } from 'astro-sanity';
+import { useSanityClient } from "astro-sanity";
+import { PortableText } from "astro-portabletext";
+import imageUrlBuilder from "@sanity/image-url";
 
-const pets = await useSanityClient().fetch(`*[_type == "pet"]`);
+const products = await useSanityClient().fetch(`*[_type == "product"]`);
+const builder = imageUrlBuilder(useSanityClient());
 
+function urlFor(source) {
+	return builder.image(source);
+}
 ---
 
 <html lang="en">
@@ -14,11 +20,35 @@ const pets = await useSanityClient().fetch(`*[_type == "pet"]`);
 		<title>Astro</title>
 	</head>
 	<h1>Astro - sanity demo</h1>
-    {
-		pets.map((pet) => (
-        <section>
-          <h2>{pet.name}</h2>
-        </section>
-      ))
-    }
+	{
+		products.map((product) => (
+			<section>
+				<h2>{product.productName}</h2>
+				<div>Released - {product.released}</div>
+				<div>Launched - {product.launchAt}</div>
+				<hr />
+				<div>
+					<h3>rich text</h3>
+					<PortableText value={product.myRichTextExample} />
+				</div>
+				<hr />
+				<div>
+					<h3>tagy</h3>
+					{product.tags.map((tag) => (
+						<p>
+							{tag.label} - {tag.value}
+						</p>
+					))}
+				</div>
+				<hr />
+				<div>
+					<h2>{product.poster.caption}</h2>		
+					<div>info - {JSON.stringify(product.poster)}</div>
+					<img src={urlFor(product.poster).width(600).url()} />
+				</div>
+			</section>
+		))
+	}
+
+
 </html>
