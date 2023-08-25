@@ -42,10 +42,15 @@ function urlFor(source) {
 				</div>
 				<hr />
 				<div>
-					<h2>{product.poster.caption}</h2>		
-					<div>info - {JSON.stringify(product.poster)}</div>
-					<img src={urlFor(product.poster).width(600).url()} />
+					<div>translation</div>
+					<span>{JSON.stringify(product.greeting1)}</span>
 				</div>
+				<hr />
+				<div>
+					<h2>{product.poster.caption}</h2>
+					<div>info - {JSON.stringify(product.poster)}</div>
+					<img src={urlFor(product.poster).width(200).url()} />
+				</div>				
 			</section>
 		))
 	}

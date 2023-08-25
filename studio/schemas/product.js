@@ -11,6 +11,11 @@ export default defineType({
             title: "Product name",
         }),
         defineField({
+            name: 'greeting1',
+            type: 'internationalizedArrayString',
+            title: 'popisek'
+        }),
+        defineField({
             title: 'Has the product been released?',
             name: 'released',
             type: 'boolean'
